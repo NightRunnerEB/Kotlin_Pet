@@ -1,1 +1,0 @@
-class Ticket(val name: String, val sessionId: Int, val uniqueID: Int, val seatNumber: Int)
