@@ -58,7 +58,6 @@ Exit the program
 ![Бухарев_Евгений_классы](https://github.com/NightRunnerEB/-_IHW-1/assets/121779561/a090f3ef-dd05-4dd8-bb74-ee16d2e48a5a)
 
 
-Use-case диаграм:
+Use-case диаграмма:
 ![Бухарев_Евгений](https://github.com/NightRunnerEB/-_IHW-1/assets/121779561/c723a328-5d27-4507-a530-946e55dcd3a1)
-ма:
 
