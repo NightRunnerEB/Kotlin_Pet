@@ -1,63 +1,68 @@
-# -_IHW-1
+# Kotlin_Pet
 
-При запуске программы открывается основное меню, где предлагается:
+This project is a simple **cinema ticket management system** with a console menu interface.  
+When the program starts, the main menu is displayed with the following options:
 
-Sell ticket
+1. Sell Ticket  
+2. Refund Ticket  
+3. View Free Seats at a Session  
+4. Edit Movie Data  
+5. Edit Session Data  
+6. Exit the Program  
 
-Refund ticket
-
-Free seats at the session
-
-Edit movie data
-
-Edit session data
-
-Exit the program
-
-
-Для выбора режима необходимо ввести номер пункта от 1 до 6:
-
-Sell ticket
 ---
-Данная функция нужна для продажи билетов. При продажи билетов необходимо выполнить следующие шаги:
 
-Выбрать сеанс
+## 📌 Features
 
-Выбрать свободное место(при наличии)
+### 1. Sell Ticket
+This function allows selling tickets. The process includes:
+- Selecting a session  
+- Choosing a free seat (if available)  
+- Entering the client’s name  
+- Entering the client’s card details  
 
-Ввести имя клиента
-
-Ввести данные карты клиента
-
-Refund Ticket
 ---
-Данная функция нужна для возврата билета. Необходимо ввести только уникальный номер билета.
 
-Free seats at the session
+### 2. Refund Ticket
+This function is used to **refund a ticket**.  
+Only the unique ticket number is required.  
+
 ---
-Функция для просмотра свободных мест на сеансе. Необходимо ввести номер сеанса.
 
-Edit movie data
+### 3. Free Seats at the Session
+This function displays **available seats** for a specific session.  
+You need to enter the session number.  
+
 ---
-Функция для редактирования информации о фильме. Необходимо выбрать номер сеанса фильма и ввести новое описание
 
-Edit session data
+### 4. Edit Movie Data
+This function allows editing movie information.  
+Select the movie session and enter a new description.  
+
 ---
-Функция для редактирования информации о сеансе. Необходимо ввести номер сеанса фильма и новую информацию о начале и конце сеанса
 
-Exit the program
+### 5. Edit Session Data
+This function allows editing session details.  
+Enter the session number and provide new start/end time information.  
+
 ---
-Выход из программы.
 
+### 6. Exit the Program
+Closes the program.  
 
-Хранение данных
 ---
-Данные хранятся в JSON файлах
 
-Диаграмма классов:
-![Бухарев_Евгений_классы](https://github.com/NightRunnerEB/-_IHW-1/assets/121779561/a090f3ef-dd05-4dd8-bb74-ee16d2e48a5a)
+## 💾 Data Storage
+All data is stored in **JSON files**.  
 
+---
 
-Use-case диаграмма:
-![Бухарев_Евгений](https://github.com/NightRunnerEB/-_IHW-1/assets/121779561/c723a328-5d27-4507-a530-946e55dcd3a1)
+## 📊 Diagrams
 
+### Class Diagram
+![Class Diagram](https://github.com/NightRunnerEB/-_IHW-1/assets/121779561/a090f3ef-dd05-4dd8-bb74-ee16d2e48a5a)
+
+### Use-Case Diagram
+![Use-Case Diagram](https://github.com/NightRunnerEB/-_IHW-1/assets/121779561/c723a328-5d27-4507-a530-946e55dcd3a1)
+
+---
