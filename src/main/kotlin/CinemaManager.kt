@@ -1,21 +1,23 @@
 import kotlinx.datetime.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
+class CinemaManager(
+    val cinemaHall: CinemaHall,
+    val movies: MutableList<Movie>,
+    val sessions: MutableList<Session>,
+    var tickets: MutableList<Ticket>
+) {
 
-class CinemaManager( val cinemaHall: CinemaHall, val movies: MutableList<Movie>, val sessions: MutableList<Session>, var tickets: MutableList<Ticket>) {
-
-
-    private var uniqueID: Int = 1
+    private var uniqueID: Int = (tickets.maxOfOrNull { it.uniqueID } ?: 0) + 1
 
     fun refundTicket(id: Int) {
         println("Билет с номером $id, возвращен!")
         val find: Ticket? = tickets.find { ticket: Ticket -> ticket.uniqueID == id }
-        if(find != null) {
+        if (find != null) {
             sessions[find.sessionId].seats[find.seatNumber] = true
-            tickets.removeIf{ x -> x.uniqueID == id}
-        } else
+            tickets.removeIf { x -> x.uniqueID == id }
+        } else {
             println("Билет с таким номером не найден!")
+        }
     }
 
     fun displaySeatsStatus(sessionIndex: Int) {
@@ -27,42 +29,50 @@ class CinemaManager( val cinemaHall: CinemaHall, val movies: MutableList<Movie>,
         }
         println()
     }
+
     fun editMovieData(movieId: Int) {
         print("Введите новое описание фильма: ")
         val input = readlnOrNull()
-        if(input != null)
+        if (input != null) {
             movies[movieId].description = input
-        else
+        } else {
             println("\nНельзя вводить пустую строку!")
+        }
     }
+
     fun editSessionData(sessionId: Int) {
         print("Введите новое время начала сеанса(в формате yyyy-MM-dd-HH-mm): ")
         val inputStart = readlnOrNull()
         print("\nВведите новое время конца сеанса(в формате yyyy-MM-dd-HH-mm): ")
         val inputEnd = readlnOrNull()
-        if(inputStart != null && inputEnd != null) {
+        if (inputStart != null && inputEnd != null) {
             val dateStart = LocalDateTime.parse(inputStart)
             val dateEnd = LocalDateTime.parse(inputEnd)
             sessions[sessionId].start = dateStart
             sessions[sessionId].end = dateEnd
-        } else
+        } else {
             println("\nНельзя вводить пустую строку!")
+        }
     }
+
     fun sellTicket(customer: Customer, sessionId: Int) {
         displaySeatsStatus(sessionId)
         print("Выберите свободное место: ")
-        val seat= readln().toIntOrNull()
-        if(seat != null) {
-            if(seat < cinemaHall.totalSeats && seat >= 0) {
-                if(sessions[sessionId].seats[seat] == true) {
+        val seat = readln().toIntOrNull()
+        if (seat != null) {
+            if (seat < cinemaHall.totalSeats && seat >= 0) {
+                if (sessions[sessionId].seats[seat]) {
                     tickets.add(Ticket(customer, sessionId, uniqueID, seat))
                     sessions[sessionId].seats[seat] = false
                     println("Вы успешно приобрели билет с номером ${uniqueID++}")
-                } else
+                } else {
                     println("Ошибка! Это место уже занято!")
-            } else
+                }
+            } else {
                 println("Ошибка! Места с таким номером не существует!")
-        } else
+            }
+        } else {
             println("\nНельзя вводить пустую строку!")
+        }
     }
 }
